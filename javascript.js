@@ -18,4 +18,10 @@ function addNewBook(bookName) {
   return myLibrary.push(bookName);
 }
 
-console.log(myLibrary);
+addNewBook(book1);
+addNewBook(book2);
+
+// Show the current library in the page
+function displayBook() {}
+
+displayBook();

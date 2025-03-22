@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto";
+  list-style-type: none;
+}
+
+header a {
+  text-decoration: none;
+  color: var(--background);
+  font-weight: bold;
+}
+
+:root {
+  --background: #282a36;
+  --background-secondary: #44475a;
+  --text: #f8f8f2;
+  --pink: #ff79c6;
+  --yellow: #f1fa8c;
+  --cyan: #8be9fd;
+  --green: #50fa7b;
+  --purple: #c29ff4;
+}
+
+body {
+  background-color: var(--background);
+  height: 100vh;
+}
+
+.container {
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+
+  padding: 15px 25px;
+  background-color: var(--background-secondary);
+}
+
+.logo {
+  font-weight: bolder;
+  font-size: 28px;
+  color: var(--background);
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+.logo,
+li a {
+  transition: 0.65s ease;
+}
+
+li a:hover,
+.logo:hover {
+  color: var(--purple);
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.card {
+  background-color: var(--background-secondary);
+  color: var(--text);
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 15px;
+
+  border: 2px solid var(--background-secondary);
+  border-radius: 15px;
+  height: 200px;
+}
+
+.rodape {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.pages {
+  align-content: end;
+  font-weight: 400;
+}
+
+.name {
+  font-weight: 800;
+}
+
+.author {
+  font-weight: 300;
+}
+
+.readStatus {
+  color: var(--green);
+}
+
+.notRead {
+  color: var(--pink);
+}
