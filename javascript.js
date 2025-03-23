@@ -48,7 +48,7 @@ function displayBook(e) {
 
   cardTitle.append(cardText);
 
-  const read = document.createElement("p");
+  const read = document.createElement("a");
   if (e.isRead === "false") {
     read.className = "notRead";
     read.textContent = "NOT READ";
@@ -78,11 +78,20 @@ function displayBook(e) {
 
     const card = e.target.closest(".card");
 
-    const index = myLibrary.findIndex((book) => book.id === bookID);
-    if (index !== -1) {
-      myLibrary.splice(index, 1);
-    }
     card.remove();
+  });
+
+  read.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log(e.target.textContent, e.target.className);
+
+    if (e.target.className == "read") {
+      e.target.className = "notRead";
+      e.target.textContent = "NOT READ";
+    } else {
+      e.target.className = "read";
+      e.target.textContent = "READ";
+    }
   });
 }
 
