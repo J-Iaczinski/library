@@ -22,6 +22,7 @@ function displayBook(e) {
 
   const newCard = document.createElement("div");
   newCard.className = "card";
+  newCard.dataset.book = e.id;
 
   const newRoda = document.createElement("div");
   newRoda.className = "rodape";
@@ -33,6 +34,19 @@ function displayBook(e) {
   const author = document.createElement("p");
   author.className = "author";
   author.textContent = e.author;
+
+  const cardTitle = document.createElement("div");
+  cardTitle.className = "title";
+  const deleteImg = document.createElement("img");
+  deleteImg.src = "icons8-lixo-128.png";
+  const link = document.createElement("a");
+  link.className = "delete";
+  link.append(deleteImg);
+
+  const cardText = document.createElement("div");
+  cardText.className = "text";
+
+  cardTitle.append(cardText);
 
   const read = document.createElement("p");
   if (e.isRead === "false") {
@@ -50,11 +64,26 @@ function displayBook(e) {
 
   newRoda.append(pages);
 
-  newCard.append(name);
-  newCard.append(author);
+  cardText.append(name);
+  cardText.append(author);
+  cardTitle.append(link);
+  newCard.append(cardTitle);
   newCard.append(newRoda);
 
   container.insertBefore(newCard, lastCard);
+
+  //Handle Deleting books
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const card = e.target.closest(".card");
+
+    const index = myLibrary.findIndex((book) => book.id === bookID);
+    if (index !== -1) {
+      myLibrary.splice(index, 1);
+    }
+    card.remove();
+  });
 }
 
 // getting the form and modals elements
@@ -93,5 +122,4 @@ form.addEventListener("submit", function (event) {
   form.reset();
   modal.close();
   displayBook(newBook);
-  console.log(readValue);
 });
