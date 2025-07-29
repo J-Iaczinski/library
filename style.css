@@ -1,0 +1,17 @@
+:root {
+  --main-bg: #141414;
+  --borders: #292929;
+  --accent: #ef798a;
+  --text: #e0e0ce;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--main-bg);
+}
