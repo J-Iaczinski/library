@@ -1,13 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="javascript.js"></script>
+    <script src="javascript.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <title>Library</title>
   </head>
   <body>
-    Testing 2
+    <div class="container">
+      <div class="content">
+        <div class="header">Library.</div>
+        <div class="card-container">
+          <div class="card create">
+            <div class="plus-container" id="plus">+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal">
+      <dialog>
+        <form action="">
+          <p>Create a New Book</p>
+          <input type="text" name="title" placeholder="Title" />
+          <input type="text" name="author" placeholder="Author" />
+          <input type="number" name="pages" placeholder="Pages" />
+          <select name="status">
+            <option value="Read">Read</option>
+            <option value="Not Read">Not Read</option>
+          </select>
+          <div class="btns">
+            <button class="btn-dialog" id="create">Create</button>
+            <button class="btn-dialog cancel" id="cancel">Cancel</button>
+          </div>
+        </form>
+      </dialog>
+    </div>
   </body>
 </html>

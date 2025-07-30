@@ -1,8 +1,10 @@
 :root {
+  --accent: #ef798a;
   --main-bg: #141414;
   --borders: #292929;
-  --accent: #ef798a;
-  --text: #e0e0ce;
+  --text: #e7e7e7;
+  --confirm: #48a784;
+  --error: #de3c5c;
 }
 
 /* Reset básico */
@@ -10,8 +12,142 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto";
+  list-style-type: none;
 }
 
 body {
   background-color: var(--main-bg);
+}
+
+.container {
+  margin: 20px 40px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  text-align: center;
+  align-content: center;
+  height: 50px;
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+
+  margin: 10px 20px;
+  color: var(--text);
+}
+
+.card {
+  background-color: #292929;
+  min-height: 140px;
+  flex-grow: 20;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.rodape {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.create.card {
+  padding: 20px;
+  align-items: center;
+  align-content: center;
+
+  cursor: pointer;
+}
+
+.plus-container {
+  font-size: 100px;
+
+  opacity: 20%;
+  transition: ease 0.4s;
+}
+
+.create.card:hover .plus-container {
+  opacity: 1;
+}
+
+.read {
+  color: var(--confirm);
+}
+
+.notRead {
+  color: var(--error);
+}
+
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #292929;
+  min-width: 250px;
+  min-height: 200px;
+  border: none;
+  border-radius: 5%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+  padding: 1em;
+}
+
+form input,
+select {
+  background-color: #141414;
+  color: var(--text);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+form button {
+  border: none;
+  padding: 0.3em;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 60px;
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#create {
+  background-color: var(--confirm);
+  color: #132d24;
+  font-weight: bolder;
+}
+
+#cancel {
+  background-color: var(--error);
+  color: #4a141f;
+  font-weight: bolder;
+}
+
+form p {
+  color: var(--text);
+  font-weight: 400;
 }
