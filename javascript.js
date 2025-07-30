@@ -31,14 +31,36 @@ function addBookToLibrary(bookName) {
   return myLibrary.push(bookName);
 }
 
-//Only for layout tests
-const newBook = new Book("Teste 1", "Autor 1", 1999, true);
-const newBook2 = new Book("Teste 2", "Autor 2", 1999, false);
-const newBook3 = new Book("Teste 3", "Autor 3", 1999, true);
+//Form validation and book creation
+const form = document.querySelector("form");
 
-addBookToLibrary(newBook);
-addBookToLibrary(newBook2);
-addBookToLibrary(newBook3);
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const author = document.querySelector('input[name="author"]');
+    const title = document.querySelector('input[name="title"]');
+    const pages = document.querySelector('input[name="pages"]');
+    const read = document.querySelector("#read").value;
+
+    console.log(author, title, pages, read);
+
+    if (
+      author.value.trim() === "" ||
+      title.value.trim() === "" ||
+      pages.value.trim() === "" ||
+      read.trim() === ""
+    ) {
+      alert("You must fill all the inputs");
+      return;
+    }
+    const newBook = new Book(author.value, title.value, pages.value, read);
+    addBookToLibrary(newBook);
+    form.reset();
+    dialog.close();
+    displayBooks(newBook);
+  });
+}
 
 function displayBooks(e) {
   const container = document.querySelector(".card-container");
