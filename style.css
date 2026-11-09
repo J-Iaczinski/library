@@ -119,7 +119,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.2s ease;
+  transition: ease-in 0.25s;
 }
 
 .btn-plus-container > button:hover {
@@ -130,7 +130,7 @@ body {
 
 .card {
   height: max-content;
-  min-width: 150px;
+  min-width: 250px;
   border: solid 3px var(--white);
   padding: 15px;
   border-radius: 10px;
@@ -141,8 +141,9 @@ body {
 }
 
 .card h1 {
+  flex-wrap: wrap;
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
 }
 
 .card p {
