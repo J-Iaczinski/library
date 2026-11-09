@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(name, author, pages, isRead) {
   this.name = name;
@@ -14,14 +14,15 @@ function addBookToLibrary(name, author, pages, isRead) {
 }
 
 addBookToLibrary('Calculus 2', 'James Stewart', '403', true);
-addBookToLibrary('Fundamentals in Physics', 'joao', '222', false);
+addBookToLibrary('Warcraft III', 'Blizard', '356', false);
 
 console.log(myLibrary);
 
 function displayBooks() {
-  myLibrary.map((e) => {
-    const cardContainer = document.querySelector('.card-container');
+  const cardContainer = document.querySelector('.card-container');
+  cardContainer.innerHTML = '';
 
+  myLibrary.map((e) => {
     const card = document.createElement('div');
     card.classList = 'card';
 
@@ -35,21 +36,27 @@ function displayBooks() {
     pages.innerText = e.pages;
 
     const deleteBtn = document.createElement('p');
+    deleteBtn.id = e.id;
     deleteBtn.innerHTML = 'DELETE';
     deleteBtn.classList = 'delete';
 
-    const bookReadStatus = document.createElement('p');
+    deleteBtn.addEventListener('click', () => {
+      myLibrary = deleteBook(myLibrary, e.id);
+      displayBooks();
+    });
 
-    if (e.isRead == false) {
-      bookReadStatus.classList = 'not-read';
-      bookReadStatus.innerText = 'NOT READ';
-    } else {
-      bookReadStatus.classList = 'read';
-      bookReadStatus.innerText = 'READ';
-    }
+    const bookReadStatus = document.createElement('p');
+    bookReadStatus.classList = 'status';
+
+    updateReadStatus(bookReadStatus, e.isRead);
+
+    bookReadStatus.addEventListener('click', () => {
+      e.isRead = !e.isRead;
+      updateReadStatus(bookReadStatus, e.isRead);
+    });
 
     // appending the books
-    cardContainer.appendChild(card);
+    cardContainer.append(card);
     card.appendChild(name);
     card.appendChild(author);
     card.appendChild(pages);
@@ -58,4 +65,55 @@ function displayBooks() {
   });
 }
 
+function handleModal() {
+  const modal = document.querySelector('dialog');
+  const btn = document.querySelector('.btn-plus');
+  const submitBtn = document.querySelector('#submit-btn');
+  const closeBtn = document.querySelector('#close-btn');
+
+  closeBtn.addEventListener('click', () => {
+    modal.close();
+  });
+
+  btn.addEventListener('click', () => {
+    modal.showModal();
+  });
+
+  submitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const bookName = document.getElementById('newBook').value;
+    const author = document.getElementById('newAuthor').value;
+    const pages = document.getElementById('newPages').value;
+    let status = document.getElementById('readStatus').value;
+
+    if (status === 'read') {
+      status = true;
+    } else {
+      status = false;
+    }
+
+    addBookToLibrary(bookName, author, pages, status);
+    displayBooks();
+
+    modal.close();
+
+    document.querySelector('form').reset();
+  });
+}
+
 displayBooks();
+handleModal();
+
+function updateReadStatus(e, isRead) {
+  if (!isRead) {
+    e.classList = 'not-read';
+    e.innerText = 'NOT READ';
+  } else {
+    e.classList = 'read';
+    e.innerText = 'READ';
+  }
+}
+
+function deleteBook(arr, id) {
+  return arr.filter((book) => book.id !== id);
+}
