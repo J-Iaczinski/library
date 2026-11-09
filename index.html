@@ -29,4 +29,37 @@
     </section>
     <footer>Jonatan Iaczinski || TOP Library</footer>
   </body>
+  <section class="dialog-section">
+    <dialog>
+      <div class="dialog-container">
+        <p>Add a New Book</p>
+        <form class="cardForm">
+          <div>
+            <label for="newBook">Book Name:</label>
+            <input type="text" id="newBook" name="title" />
+          </div>
+          <div>
+            <label for="newAuthor">Author:</label>
+            <input type="text" id="newAuthor" name="author" />
+          </div>
+          <div>
+            <label for="newPages">Pages:</label>
+            <input type="number" id="newPages" name="pages" />
+          </div>
+          <div>
+            <label for="readStatus">Read Status:</label>
+            <select id="readStatus" name="status" required>
+              <option disabled selected value="">-- select an option --</option>
+              <option value="read">READ</option>
+              <option value="not-read">NOT READ</option>
+            </select>
+          </div>
+          <div class="btns-dialog-card">
+            <button type="button">Close</button>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+  </section>
 </html>
